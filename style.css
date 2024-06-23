@@ -1,0 +1,19 @@
+.banner {
+    background-image: url('./img/CaryQuad_banner.jpg');
+    height: 250px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 50%;
+}
+
+.foot {
+    text-align: center;
+}
