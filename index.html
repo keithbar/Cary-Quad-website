@@ -23,22 +23,49 @@
     <body>
 
         <header>
-            <div class="banner">
-                <img src="img/CaryQuad_logo.jpg" alt="Cary Quad" class="logo">
+            <div id="banner">
+                <img src="img/CaryQuad_logo.jpg" alt="Cary Quad" id="logo">
             </div>
         </header>
 
         <main>
 
-            <div class="out_now"><h2>New album <i>TRAVELS</i> out now!</h2></div>
+            <div id="out_now"><h2>New album <i>TRAVELS</i> out now!</h2></div>
 
-            <div class="music_embed">
+            <div id="music_embed">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JCkbLEtus4o6yqwTr8VBj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-            
+
+            <div id="links_container">
+                <div id="links" class="accordion accordion-flush">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="stream_heading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                data-bs-target="#stream_links">
+                                    Stream
+                            </button>
+                        </h2>
+                        <div id="stream_links" class="accordion-collapse collapse" data-bs-parent="#links">
+                            <div class="accordion-body">abcdef</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="purchase_heading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                data-bs-target="#purchase_links">
+                                    Purchase
+                            </button>
+                        </h2>
+                        <div id="purchase_links" class="accordion-collapse collapse" data-bs-parent="#links">
+                            <div class="accordion-body">abcdef</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
 
-        <footer class="foot">
+        <footer id="foot">
             &copy;2024 Cary Quad
         </footer>
 

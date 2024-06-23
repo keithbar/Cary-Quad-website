@@ -1,4 +1,4 @@
-.banner {
+#banner {
     background-image: url('./img/CaryQuad_banner.jpg');
     height: 250px;
     width: 100%;
@@ -10,24 +10,40 @@
     align-items: center;
 }
 
-.logo {
+#logo {
     height: 50%;
 }
 
-.out_now {
+#out_now {
     text-align: center;
 }
 
-.music_embed {
+#music_embed {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.music_embed iframe {
+#music_embed iframe {
     width: 50%;
 }
 
-.foot {
+#links_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#links {
+    width: 50%;
+}
+
+.accordion {
+    --bs-accordion-btn-bg: transparent;
+	--bs-accordion-active-bg: transparent;
+    --bs-accordion-btn-focus-box-shadow: transparent;
+}
+
+#foot {
     text-align: center;
 }
