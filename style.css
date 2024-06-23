@@ -14,6 +14,20 @@
     height: 50%;
 }
 
+.out_now {
+    text-align: center;
+}
+
+.music_embed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music_embed iframe {
+    width: 50%;
+}
+
 .foot {
     text-align: center;
 }
