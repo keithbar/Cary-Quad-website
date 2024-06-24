@@ -18,19 +18,75 @@
         />
 
         <link rel="stylesheet" href="style.css">
+
+        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+        <script src="CaryQuad_animation.js"></script>
+        <script>
+            var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+            function init() {
+                if(window.innerWidth < 800){
+                    var static_logo = document.getElementById("logo");
+                    static_logo.style.display = "flex"; //turn on static logo
+                    return;
+                }
+                canvas = document.getElementById("canvas");
+                anim_container = document.getElementById("animation_container");
+                anim_container.style.display = "flex"; //turn on animated logo
+                dom_overlay_container = document.getElementById("dom_overlay_container");
+                var comp=AdobeAn.getComposition("DC220379A52EF14A83BF668CF0B81D15");
+                var lib=comp.getLibrary();
+                var loader = new createjs.LoadQueue(false);
+                loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+                loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+                var lib=comp.getLibrary();
+                loader.loadManifest(lib.properties.manifest);
+            }
+            function handleFileLoad(evt, comp) {
+                var images=comp.getImages();	
+                if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+            }
+            function handleComplete(evt,comp) {
+                //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+                var lib=comp.getLibrary();
+                var ss=comp.getSpriteSheet();
+                var queue = evt.target;
+                var ssMetadata = lib.ssMetadata;
+                for(i=0; i<ssMetadata.length; i++) {
+                    ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+                }
+                exportRoot = new lib.logotest();
+                stage = new lib.Stage(canvas);	
+                //Registers the "tick" event listener.
+                fnStartAnimation = function() {
+                    stage.addChild(exportRoot);
+                    createjs.Ticker.framerate = lib.properties.fps;
+                    createjs.Ticker.addEventListener("tick", stage);
+                }	    
+                //Code to support hidpi screens and responsive scaling.
+                AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);	
+                AdobeAn.compositionLoaded(lib.properties.id);
+                fnStartAnimation();
+            }
+        </script>
     </head>
 
-    <body>
+    <body onload="init();">
 
         <header>
             <div id="banner">
-                <img src="img/CaryQuad_logo.jpg" alt="Cary Quad" id="logo">
+                <img src="img/CaryQuad_logo.png" alt="Cary Quad" id="logo">
+                
+                <div id="animation_container">
+                    <canvas id="canvas"></canvas>
+                    <div id="dom_overlay_container">
+                    </div>
+                </div>
             </div>
         </header>
 
         <main>
 
-            <div id="out_now"><h2>New album <i>TRAVELS</i> out now!</h2></div>
+            <div id="out_now"><h2>New album <i><b>TRAVELS</b></i><br>out now on all platforms!</h2></div>
 
             <div id="music_embed">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JCkbLEtus4o6yqwTr8VBj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -42,22 +98,81 @@
                         <h2 class="accordion-header" id="stream_heading">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#stream_links">
-                                    Stream
+                                    <span class="text-center w-100">Stream</span>
                             </button>
                         </h2>
                         <div id="stream_links" class="accordion-collapse collapse" data-bs-parent="#links">
-                            <div class="accordion-body">abcdef</div>
+                            <div class="accordion-body">
+                                <div class="row justify-content-center">
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_spotify.png" alt="Spotify" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_applemusic.png" alt="Apple Music" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_youtubemusic.png" alt="Youtube Music" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_amazonmusic.png" alt="Amazon Music" class="stream_logo">
+                                        </a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row justify-content-center">
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_youtube.png" alt="Youtube" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_bandcamp.png" alt="Bandcamp" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_soundcloud.png" alt="Soundcloud" class="stream_logo">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="purchase_heading">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#purchase_links">
-                                    Purchase
+                                <span class="text-center w-100">Purchase</span>
                             </button>
                         </h2>
                         <div id="purchase_links" class="accordion-collapse collapse" data-bs-parent="#links">
-                            <div class="accordion-body">abcdef</div>
+                            <div class="accordion-body">
+                                <div class="row justify-content-center">
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_itunes.png" alt="iTunes" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_amazon.png" alt="Amazon" class="stream_logo">
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="https://spotify.com">
+                                            <img src="./img/CaryQuad_bandcamp.png" alt="Bandcamp" class="stream_logo">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,6 +181,8 @@
         </main>
 
         <footer id="foot">
+            <a href="mailto:caryquadband@gmail.com">Contact Us</a>
+            <br>
             &copy;2024 Cary Quad
         </footer>
 

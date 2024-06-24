@@ -1,5 +1,19 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-image: url('./img/CaryQuad_background.jpg');
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
 #banner {
-    background-image: url('./img/CaryQuad_banner.jpg');
+    background-image: linear-gradient(90deg, black, transparent, black),
+        url('./img/CaryQuad_banner.jpg');
     height: 250px;
     width: 100%;
     background-position: center center;
@@ -8,14 +22,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #logo {
     height: 50%;
+    display: none;
+}
+
+#animation_container {
+    display: none;
 }
 
 #out_now {
     text-align: center;
+    color: lightgrey;
+    padding: 30px;
 }
 
 #music_embed {
@@ -25,25 +47,62 @@
 }
 
 #music_embed iframe {
-    width: 50%;
+    width: 40%;
 }
 
 #links_container {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 30px;
 }
 
 #links {
-    width: 50%;
+    width: 40%;
 }
 
 .accordion {
     --bs-accordion-btn-bg: transparent;
 	--bs-accordion-active-bg: transparent;
     --bs-accordion-btn-focus-box-shadow: transparent;
+    --bs-accordion-color: transparent;
+    --bs-accordion-bg: transparent;
+    --bs-accordion-border-color: transparent;
+    --bs-accordion-btn-color: lightgrey;
+    --bs-accordion-active-color: lightgrey;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='lightgrey'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='lightgrey'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button {
+    font-size: 1.5em;
+}
+
+.accordion-body {
+    color: lightgrey;
+}
+
+.col-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stream_logo {
+    width: 50px;
+    margin: auto;
 }
 
 #foot {
     text-align: center;
+    color: lightgrey;
+}
+
+a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
