@@ -9,6 +9,8 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
+        <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+
         <!-- Bootstrap CSS v5.2.1 -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -24,14 +26,14 @@
         <script>
             var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
             function init() {
-                if(window.innerWidth < 800){
+                /*if(window.innerWidth < 800){
                     var static_logo = document.getElementById("logo");
                     static_logo.style.display = "flex"; //turn on static logo
                     return;
-                }
+                }*/
                 canvas = document.getElementById("canvas");
                 anim_container = document.getElementById("animation_container");
-                anim_container.style.display = "flex"; //turn on animated logo
+                //anim_container.style.display = "flex"; //turn on animated logo
                 dom_overlay_container = document.getElementById("dom_overlay_container");
                 var comp=AdobeAn.getComposition("DC220379A52EF14A83BF668CF0B81D15");
                 var lib=comp.getLibrary();
@@ -86,17 +88,19 @@
 
         <main>
 
+            <div id="tagline"><i>Take a trip with Cary Quad.</i></div>
             <div id="out_now"><h2>New album <i><b>TRAVELS</b></i><br>out now on all platforms!</h2></div>
 
             <div id="music_embed">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JCkbLEtus4o6yqwTr8VBj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe id="youtube_embed" style="border-radius:12px" width="100%" src="https://www.youtube.com/embed/9hf4DcYaxD4?si=aGwf28-VePJXHqgq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe id="spotify_embed" style="border-radius:12px" src="https://open.spotify.com/embed/album/3JCkbLEtus4o6yqwTr8VBj?utm_source=generator&theme=0" width="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
 
             <div id="links_container">
                 <div id="links" class="accordion accordion-flush">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="stream_heading">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#stream_links">
                                     <span class="text-center w-100">Stream</span>
                             </button>
@@ -148,7 +152,7 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="purchase_heading">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#purchase_links">
                                 <span class="text-center w-100">Purchase</span>
                             </button>
@@ -181,7 +185,7 @@
         </main>
 
         <footer id="foot">
-            <a href="mailto:caryquadband@gmail.com">Contact Us</a>
+            <a href="mailto:caryquadband@gmail.com">✉ Contact Us</a>
             <br>
             &copy;2024 Cary Quad
         </footer>
