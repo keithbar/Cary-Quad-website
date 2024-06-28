@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <title>Cary Quad</title>
-        <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -10,90 +9,30 @@
         />
 
         <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-
-        <!-- Bootstrap CSS v5.2.1 -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
-
         <link rel="stylesheet" href="style.css">
-
-        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-        <script src="CaryQuad_animation.js"></script>
-        <script>
-            var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-            function init() {
-                /*if(window.innerWidth < 800){
-                    var static_logo = document.getElementById("logo");
-                    static_logo.style.display = "flex"; //turn on static logo
-                    return;
-                }*/
-                canvas = document.getElementById("canvas");
-                anim_container = document.getElementById("animation_container");
-                //anim_container.style.display = "flex"; //turn on animated logo
-                dom_overlay_container = document.getElementById("dom_overlay_container");
-                var comp=AdobeAn.getComposition("DC220379A52EF14A83BF668CF0B81D15");
-                var lib=comp.getLibrary();
-                var loader = new createjs.LoadQueue(false);
-                loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-                loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-                var lib=comp.getLibrary();
-                loader.loadManifest(lib.properties.manifest);
-            }
-            function handleFileLoad(evt, comp) {
-                var images=comp.getImages();	
-                if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-            }
-            function handleComplete(evt,comp) {
-                //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-                var lib=comp.getLibrary();
-                var ss=comp.getSpriteSheet();
-                var queue = evt.target;
-                var ssMetadata = lib.ssMetadata;
-                for(i=0; i<ssMetadata.length; i++) {
-                    ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-                }
-                exportRoot = new lib.logotest();
-                stage = new lib.Stage(canvas);	
-                //Registers the "tick" event listener.
-                fnStartAnimation = function() {
-                    stage.addChild(exportRoot);
-                    createjs.Ticker.framerate = lib.properties.fps;
-                    createjs.Ticker.addEventListener("tick", stage);
-                }	    
-                //Code to support hidpi screens and responsive scaling.
-                AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);	
-                AdobeAn.compositionLoaded(lib.properties.id);
-                fnStartAnimation();
-            }
-        </script>
     </head>
 
-    <body onload="init();">
-
+    <body>
         <header>
             <div id="banner">
-                <img src="img/CaryQuad_logo.png" alt="Cary Quad" id="logo">
-                
-                <div id="animation_container">
-                    <canvas id="canvas"></canvas>
-                    <div id="dom_overlay_container">
-                    </div>
-                </div>
+                <img src="img/CaryQuad_logo.png" alt="Cary Quad" id="logo_static">
+                <img src="img/CaryQuad_animatedlogo.webp" alt="Cary Quad" id="logo_animated">
             </div>
         </header>
 
         <main>
-
-            <div id="tagline"><i>Take a trip with Cary Quad.</i></div>
+            <div id="tagline"><i>Take a trip with Cary Quad...</i></div>
             <div id="out_now"><h2>New album <i><b>TRAVELS</b></i><br>out now on all platforms!</h2></div>
 
             <div id="music_embed">
-                <iframe id="youtube_embed" style="border-radius:12px" width="100%" src="https://www.youtube.com/embed/9hf4DcYaxD4?si=aGwf28-VePJXHqgq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe id="spotify_embed" style="border-radius:12px" src="https://open.spotify.com/embed/album/3JCkbLEtus4o6yqwTr8VBj?utm_source=generator&theme=0" width="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe id="youtube_embed" style="border-radius:12px" width="100%" src="https://www.youtube.com/embed/38jZtUhoCCE?si=8Poh5QMoMw4tXCQW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe id="spotify_embed" style="border-radius:12px" src="https://open.spotify.com/embed/album/1waTRPYq4roLdVprpqTtDD?utm_source=generator&theme=0" width="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
 
             <div id="links_container">
@@ -109,22 +48,22 @@
                             <div class="accordion-body">
                                 <div class="row justify-content-center">
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://open.spotify.com/album/1waTRPYq4roLdVprpqTtDD">
                                             <img src="./img/CaryQuad_spotify.png" alt="Spotify" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://music.apple.com/us/album/travels/1749992417">
                                             <img src="./img/CaryQuad_applemusic.png" alt="Apple Music" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://music.youtube.com/playlist?list=OLAK5uy_kzcRCZszkzgWbTtW7eOKeGaD21a56Lm5g">
                                             <img src="./img/CaryQuad_youtubemusic.png" alt="Youtube Music" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://music.amazon.com/albums/B0D5Y34NPM">
                                             <img src="./img/CaryQuad_amazonmusic.png" alt="Amazon Music" class="stream_logo">
                                         </a>
                                     </div>
@@ -132,17 +71,17 @@
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://www.youtube.com/playlist?list=PLNbma5RF867MB2-8EiUY2T9wPxFH9FCAc">
                                             <img src="./img/CaryQuad_youtube.png" alt="Youtube" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://caryquad.bandcamp.com/album/travels">
                                             <img src="./img/CaryQuad_bandcamp.png" alt="Bandcamp" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://soundcloud.com/caryquad/sets/travels">
                                             <img src="./img/CaryQuad_soundcloud.png" alt="Soundcloud" class="stream_logo">
                                         </a>
                                     </div>
@@ -161,17 +100,17 @@
                             <div class="accordion-body">
                                 <div class="row justify-content-center">
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://music.apple.com/us/album/travels/1749992417">
                                             <img src="./img/CaryQuad_itunes.png" alt="iTunes" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://www.amazon.com/music/player/albums/B0D5Y34NPM">
                                             <img src="./img/CaryQuad_amazon.png" alt="Amazon" class="stream_logo">
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="https://spotify.com">
+                                        <a href="https://caryquad.bandcamp.com/album/travels">
                                             <img src="./img/CaryQuad_bandcamp.png" alt="Bandcamp" class="stream_logo">
                                         </a>
                                     </div>
@@ -181,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
         </main>
 
         <footer id="foot">
